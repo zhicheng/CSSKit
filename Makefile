@@ -1,10 +1,9 @@
 CXX = clang++
 CXXFLAGS = -g -Wall 
-SRCS = CSSAST.cpp CSSColor.cpp CSSFont.cpp CSSImage.cpp CSSLexer.cpp CSSParser.cpp test.cpp
+SRCS = CSSAST.cpp CSSColor.cpp CSSFont.cpp CSSImage.cpp CSSLexer.cpp CSSParser.cpp
 OBJS = $(SRCS:.cpp=.o)
 
-test: $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
+all: $(OBJS)
 
 CSSAST.o: CSSAST.cpp CSSAST.hpp
 CSSColor.o: CSSColor.cpp CSSColor.hpp
@@ -17,5 +16,5 @@ CSSParser.o: CSSParser.cpp CSSParser.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@	
 
 clean:
-	rm -rf $(OBJS) test test.dSYM
+	rm -rf $(OBJS) _Inline
 
