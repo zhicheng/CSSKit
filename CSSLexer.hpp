@@ -7,7 +7,9 @@
 
 namespace CSS {
 
-	
+class Lex {
+
+};
 
 }; /* namespace */
 

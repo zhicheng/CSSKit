@@ -8,11 +8,12 @@ namespace CSS {
 /* selector { property: value; } */
 
 typedef enum {	TokenSelector, 			/* x {} */
+		TokenColon,			/*  :  	*/
+		TokenCot,			/*  .   */
 
 		TokenDeclarationBegin;		/* { 	*/
 		TokenDeclarationEnd;		/* } 	*/
 		TokenDeclarationProperty, 	/* x:   */
-		TokenDeclarationColon,		/*  :  	*/
 		TokenDeclarationExpr,		/*  :x 	*/
 		TokenDeclarationComma,		/*  ,   */
 		TokenDeclarationId,		/* xxx  */
@@ -25,7 +26,7 @@ typedef enum {	TokenSelector, 			/* x {} */
 
 		TokenCommentBegin,		/*      */
 		TokenCommentEnd,		/* 	*/
-	} TokenType;
+} TokenType;
 
 class Token {
 public:

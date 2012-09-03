@@ -12,7 +12,7 @@ typedef enum {	CSSUnitPercent,		/* %   	*/
 		CSSUnitPixels,		/* px	*/
 		CSSUnitEm,		/* em	*/
 		CSSUnitEx,		/* px	*/
-	} CSSUnit;
+} CSSUnit;
 
 class CSSSize {
 public:
