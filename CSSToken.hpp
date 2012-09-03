@@ -11,8 +11,8 @@ typedef enum {	TokenSelector, 			/* x {} */
 		TokenColon,			/*  :  	*/
 		TokenCot,			/*  .   */
 
-		TokenDeclarationBegin;		/* { 	*/
-		TokenDeclarationEnd;		/* } 	*/
+		TokenDeclarationBegin,		/* { 	*/
+		TokenDeclarationEnd,		/* } 	*/
 		TokenDeclarationProperty, 	/* x:   */
 		TokenDeclarationExpr,		/*  :x 	*/
 		TokenDeclarationComma,		/*  ,   */

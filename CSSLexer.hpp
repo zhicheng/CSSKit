@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "CSSToken.h"
+#include "CSSToken.hpp"
 
 namespace CSS {
 

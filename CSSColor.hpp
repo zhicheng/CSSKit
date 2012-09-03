@@ -15,10 +15,10 @@ public:
 
 	Color(unsigned int hex) 
 	{
-		r = ((hex >> 24) 0xFF) / 255.0f
-		g = ((hex >> 16) 0xFF) / 255.0f
-		b = ((hex >>  8) 0xFF) / 255.0f
-		a = ((hex >>  0) 0xFF) / 255.0f
+		r = ((hex >> 24) & 0xFF) / 255.0f;
+		g = ((hex >> 16) & 0xFF) / 255.0f;
+		b = ((hex >>  8) & 0xFF) / 255.0f;
+		a = ((hex >>  0) & 0xFF) / 255.0f;
 	}
 
 	Color(std::string color_) : color(color_)
