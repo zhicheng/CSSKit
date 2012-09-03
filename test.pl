@@ -14,9 +14,13 @@ __END__
 __CPP__
 
 #include <iostream>
-#include "CSSColor.hpp"
+#include "CSSKit.hpp"
 
 void test()
 {
-	CSS::Color *color = new CSS::Color(0xFFFFFFFF);
+	CSS::Color color(0xFFFFFFFF);
+	std::cout << color.r << std::endl
+		  << color.g << std::endl
+		  << color.b << std::endl
+		  << color.a << std::endl;
 }
