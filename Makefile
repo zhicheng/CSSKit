@@ -18,3 +18,6 @@ CSSParser.o: CSSParser.cpp CSSParser.hpp
 clean:
 	rm -rf $(OBJS)
 
+test:
+	prove
+

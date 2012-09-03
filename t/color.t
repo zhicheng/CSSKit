@@ -4,6 +4,7 @@ use Test::More tests => 1;
 
 use Cwd;
 use Inline CPP => Config => INC  => '-I' . cwd();
+use Inline Force;
 use Inline CPP;
 
 ok(testhex(0xFFFFFFFF, 1.0, 1.0, 1.0, 1.0), "test color #FFFFFFFF");
