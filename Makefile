@@ -17,5 +17,5 @@ CSSParser.o: CSSParser.cpp CSSParser.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@	
 
 clean:
-	rm -rf $(OBJS) test
+	rm -rf $(OBJS) test test.dSYM
 
