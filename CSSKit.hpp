@@ -6,6 +6,8 @@
 #include "CSSColor.hpp"
 #include "CSSImage.hpp"
 
+#include "CSSLexer.hpp"
+
 namespace CSS {
 
 };

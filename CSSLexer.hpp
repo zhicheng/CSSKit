@@ -7,8 +7,22 @@
 
 namespace CSS {
 
-class Lex {
+class Lexer {
+public:
+	std::string input;
+	int p;
+	char c;
 
+	Lexer(std::string &input_)
+	: input(input_), p(0)
+	{
+		c = input[p];
+	}
+	
+	void nextChar();
+
+	Token *nextToken();
+	Token *identToken();
 };
 
 }; /* namespace */

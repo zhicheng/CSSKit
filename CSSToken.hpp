@@ -2,31 +2,34 @@
 #define __TOKEN_HPP__
 
 #include <iostream>
+#include <vector>
 
 namespace CSS {
 
 /* selector { property: value; } */
 
-typedef enum {	TokenSelector, 			/* x {} */
-		TokenColon,			/*  :  	*/
-		TokenCot,			/*  .   */
-
-		TokenDeclarationBegin,		/* { 	*/
-		TokenDeclarationEnd,		/* } 	*/
-		TokenDeclarationProperty, 	/* x:   */
-		TokenDeclarationExpr,		/*  :x 	*/
-		TokenDeclarationComma,		/*  ,   */
-		TokenDeclarationId,		/* xxx  */
-		TokenDeclarationSize,		/* 1px  */
-		TokenDeclarationNumber,		/* 123  */
-		TokenDeclarationString,		/* 'xx' */
-		TokenDeclarationColor,		/* #FFF */
-		TokenDeclarationFunction,	/* u()  */
-		TokenDeclarationSemicolon,	/*    ; */
-
-		TokenCommentBegin,		/*      */
-		TokenCommentEnd,		/* 	*/
+typedef enum {	TokenIDENT,			/* xxx  */
+		TokenLBRACES,			/*  {   */
+		TokenRBRACES,			/*  }   */
+		TokenCOLON,			/*  :  	*/
+		TokenDOT,			/*  .   */
+		TokenNUM,			/* 123  */
+		TokenSTRING,			/* 'xx' */
+		TokenSEMICOLON,			/* ;	*/
+		TokenEOF,			/* EOF  */
 } TokenType;
+
+static char tokenNames[9][12] = {
+	"<IDENT>",
+	"<LBRACES>",
+	"<RBRACES>",
+	"<COLON>",
+	"<DOT>",
+	"<NUM>",
+	"<STRING>",
+	"<SEMICOLON>",
+	"<EOF>"
+};
 
 class Token {
 public:
@@ -35,6 +38,12 @@ public:
 	
 	Token(TokenType type_, std::string text_)
 	: type(type_), text(text_) {}
+
+	char *
+	name()
+	{
+		return tokenNames[type];
+	}
 };
 
 
