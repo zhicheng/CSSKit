@@ -11,7 +11,7 @@ class Lexer {
 public:
 	std::string input;
 	int p;
-	char c;
+	int c;
 
 	Lexer(std::string &input_)
 	: input(input_), p(0)
@@ -19,10 +19,9 @@ public:
 		c = input[p];
 	}
 	
-	void nextChar();
+	void consume();
 
 	Token *nextToken();
-	Token *identToken();
 };
 
 }; /* namespace */

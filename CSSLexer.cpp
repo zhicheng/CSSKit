@@ -3,7 +3,7 @@
 namespace CSS {
 
 void
-Lexer::nextChar()
+Lexer::consume()
 {
 	p++;
 	if (p >= input.length()) 
@@ -15,44 +15,67 @@ Lexer::nextChar()
 Token *
 Lexer::nextToken()
 {
-	/* remove white space */
-	if (isspace(c))
-		nextChar();
+	std::string identifier;
+
+	while (isspace(c))
+		consume();
 
 	while (c != EOF) {
 		switch (c) {
 		case ';':
-			nextChar();
+			consume();
 			return new Token(TokenSEMICOLON, ";");
 		case '{':
-			nextChar();
-			return new Token(TokenLBRACES, "{");
+			consume();
+			return new Token(TokenBLOCKOPEN, "{");
 		case '}':
-			nextChar();
-			return new Token(TokenRBRACES, "}");
+			consume();
+			return new Token(TokenBLOCKCLOSE, "}");
 		case ':':
-			nextChar();
+			consume();
 			return new Token(TokenCOLON, ":");
-			nextChar();
 		case '.':
-			nextChar();
+			consume();
 			return new Token(TokenDOT, ".");
+		case '\'':
+		{
+			std::string str;
+			do {
+				consume();
+				if (c == '\\') {
+					consume(); // eat '\'
+					str += c;
+					consume();
+				} else if (c != '\'') {
+					str += c;
+				}
+			} while (c != '\'');
+			consume();
+			return new Token(TokenSTRING, str);
+		}
 		default:
-			if (isalpha(c)) 
+			if (isalpha(c) || c == '-' || c == '_') {
+				std::string buf;
+				do { 
+					buf += c; consume(); 
+				} while (isalnum(c) || c == '-' || c == '_');
+				return new Token(TokenIDENT, buf);
 				return identToken();
-			else
-				std::cout<<"invalid character: "<<c<<std::endl;
+			} else if (isnumber(c)) {
+				std::string num;
+				for (int i = 0; i < 6 && isnumber(c); i++) {
+					num += c;
+					consume();
+				}
+				if (!isalpha(c))
+					return new Token(TokenNUMBER, num);
+				printf("invalid character number: %c\n", c);
+			} else {
+				printf("invalid character: %c\n", c);
+			}
 		}
 	}
-	return new Token(TokenEOF, "EOF");
-}
-
-Token *
-Lexer::identToken()
-{
-	std::string buf;
-	do { buf += c; nextChar(); } while (isalpha(c));
-	return new Token(TokenIDENT, buf);
+	return new Token(TokenEOF, "");
 }
 
 }; /* namespace */

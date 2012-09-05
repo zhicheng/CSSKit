@@ -6,29 +6,71 @@
 
 namespace CSS {
 
+/* define from 					  	*/
+/* http://www.w3.org/TR/css3-syntax/#tokenization 	*/
+
 /* selector { property: value; } */
 
-typedef enum {	TokenIDENT,			/* xxx  */
-		TokenLBRACES,			/*  {   */
-		TokenRBRACES,			/*  }   */
-		TokenCOLON,			/*  :  	*/
-		TokenDOT,			/*  .   */
-		TokenNUM,			/* 123  */
-		TokenSTRING,			/* 'xx' */
-		TokenSEMICOLON,			/* ;	*/
+typedef enum {	TokenIDENT,
+		TokenATKEYWORD,
+		TokenSTRING,
+		TokenHASH,
+		TokenNUMBER,
+		TokenPERCENTAGE,
+		TokenDIMENSION,
+		TokenURI,
+		TokenUNICODE_RANGE,
+		TokenCDO,
+		TokenCDE,
+		TokenS,
+		TokenCOMMENT,
+		TokenFUNCTION,
+		TokenINCLUDES,
+		TokenDASHMATCH,
+		TokenPREFIXMATCH,
+		TokenSUFFIXMATCH,
+		TokenSUBSTRINGMATCH,
+		TokenCHAR,
+		TokenBOM,
+		
+/* define for lexer */
+		TokenBLOCKOPEN,
+		TokenBLOCKCLOSE,
+		TokenCOLON,
+		TokenDOT,
+		TokenSEMICOLON,
 		TokenEOF,			/* EOF  */
 } TokenType;
 
-static char tokenNames[9][12] = {
+static char tokenNames[27][17] = {
 	"<IDENT>",
-	"<LBRACES>",
-	"<RBRACES>",
+	"<ATKEYWORD>",
+	"<STRING>",
+	"<HASH>",
+	"<NUMBER>",
+	"<PERCENTAGE>",
+	"<DIMENSION>",
+	"<URI>",
+	"<UNICODE-RANGE>",
+	"<CDO>",
+	"<CDC>",
+	"<S>",
+	"<COMMENT>",
+	"<FUNCTION>",
+	"<INCLUDES>",
+	"<DASHMATCH>",
+	"<PREFIXMATCH>",
+	"<SUFFIXMATCH>",
+	"<SUBSTRINGMATCH>",
+	"<CHAR>",
+	"<BOM>",
+
+	"<BLOCKOPEN>",
+	"<BLOCKCLOSE>",
 	"<COLON>",
 	"<DOT>",
-	"<NUM>",
-	"<STRING>",
 	"<SEMICOLON>",
-	"<EOF>"
+	"<EOF>",
 };
 
 class Token {
