@@ -17,6 +17,7 @@ Lexer::nextToken()
 {
 	std::string identifier;
 
+	/* eat whitespace */
 	while (isspace(c))
 		consume();
 
